@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Monetira design system. Change brand colors and fonts here. */
+@theme {
+  --color-charcoal: #252525;
+  --color-ivory: #f7f5f0;
+  --color-teal: #287d80;
+  --color-teal-dark: #1f6467;
+  --color-bronze: #c39a63;
+  --color-ink-soft: #55534f; /* body text on light backgrounds */
+  --color-line: #e6e2d9; /* hairline borders */
+
+  --font-heading: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ivory font-body text-charcoal antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-charcoal;
+    letter-spacing: -0.02em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    animation: fade-up 0.8s ease-out both;
+  }
+  .fade-up-delay {
+    animation: fade-up 0.8s 0.15s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
