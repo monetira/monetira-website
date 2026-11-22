@@ -14,22 +14,31 @@ React + Vite + TypeScript + Tailwind CSS site for Monetira.
 | Brand colors and fonts | `src/styles/index.css` (the `@theme` block) |
 | Logo | `public/images/monetira-logo.png` (original kept as `monetira-logo-original.png`) |
 
-Editing a file on GitHub (pencil icon, then "Commit changes") automatically rebuilds the site in about 2 minutes.
+Editing a file on GitHub (pencil icon, then "Commit changes") automatically rebuilds the site on Cloudflare Pages in about 2 minutes.
 
 ## Forms
 
-Forms use Tally. The Free Snapshot page embeds the Tally form set in `snapshotTallyUrl`. When the Tally Contact form is ready, paste its link into `contactTallyUrl`. No passwords or API keys are needed or stored in this project.
+Forms use Tally. The Contact page embeds the form set in `contactTallyUrl`, and the private /website-vision page embeds the form set in `visionTallyUrl` (both in `src/data/site.ts`). No passwords or API keys are needed or stored in this project.
 
-## Deployment
+## Deployment (Cloudflare Pages)
 
-Every change to the `main` branch runs `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages. In the repository settings, **Pages > Build and deployment > Source** must be set to **GitHub Actions**.
+The code lives in this GitHub repository. Cloudflare Pages is connected to it and rebuilds the site on every change to `main`.
 
-## At launch (only after approval)
+Cloudflare Pages settings:
+- Framework preset: Vite (or None)
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Environment variable: `NODE_VERSION` = `22`
 
-1. In `vite.config.ts`, change `base: '/monetira-website/'` to `base: '/'`.
-2. In `index.html`, delete the line `<meta name="robots" content="noindex, nofollow" />`.
-3. Add a file `public/CNAME` containing `monetira.com`.
-4. Connect the domain in GitHub Pages settings, then update DNS.
+## Search engines
+
+- Page titles and descriptions: `src/data/seo.json`. The build writes them into each page's HTML and generates `sitemap.xml`.
+- `public/robots.txt` allows all pages and points to the sitemap.
+- `/website-vision` is marked noindex and left out of the sitemap.
+
+## Launch
+
+In Cloudflare Pages, add the custom domain monetira.com (and www), then update DNS as Cloudflare instructs.
 
 ## Run on a computer (optional)
 

@@ -1,15 +1,22 @@
-import Button from '../components/Button'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
+import { StudioPageHeader, goldBtn } from '../components/Studio'
 
 export default function NotFound() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-32 text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bronze">404</p>
-      <h1 className="mt-4 text-4xl font-bold">We couldn't find that page.</h1>
-      <p className="mt-5 text-lg text-ink-soft">The page may have moved, or the address may be mistyped.</p>
-      <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-        <Button to="/">Go to the homepage</Button>
-        <Button to="/contact" variant="secondary">Contact us</Button>
+    <StudioPageHeader eyebrow="404" title="We couldn't find that page.">
+      <p>The page may have moved, or the address may be mistyped.</p>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <Link to="/" className={goldBtn}>
+          Go to the homepage <ArrowRight aria-hidden="true" className="h-4 w-4" />
+        </Link>
+        <Link
+          to="/contact"
+          className="inline-flex items-center justify-center rounded-full border border-ivory/25 px-7 py-3.5 text-[15px] font-semibold text-ivory transition-colors hover:border-ivory/60"
+        >
+          Contact us
+        </Link>
       </div>
-    </section>
+    </StudioPageHeader>
   )
 }

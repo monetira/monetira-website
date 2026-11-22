@@ -1,54 +1,34 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
 import { site, navLinks } from '../data/site'
+import { studio } from '../data/studio'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
-        <div>
-          <Logo size={72} />
-          <p className="mt-5 max-w-xs font-heading text-lg font-semibold text-charcoal">{site.tagline}</p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-soft">
-            Independent business assessment and advisory for small and midsize businesses.
-          </p>
+    <footer className="border-t border-line bg-ivory">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-12 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-4">
+          <Logo size={56} />
+          <div>
+            <p className="font-serif text-2xl leading-none">{site.tagline}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-charcoal/70">{studio.descriptor}</p>
+          </div>
         </div>
-
-        <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-bronze">Explore</h2>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <Link to="/snapshot" className="text-ink-soft hover:text-teal">Free Business Snapshot</Link>
+        <ul className="flex flex-wrap gap-x-7 gap-y-2 text-sm">
+          {navLinks.map((l) => (
+            <li key={l.to}>
+              <Link to={l.to} className="text-charcoal/70 hover:text-teal">{l.label}</Link>
             </li>
-            {navLinks.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="text-ink-soft hover:text-teal">{l.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-bronze">Contact</h2>
-          <ul className="mt-4 space-y-2.5 text-sm text-ink-soft">
-            {site.contactEmail && (
-              <li>
-                <a href={`mailto:${site.contactEmail}`} className="hover:text-teal">{site.contactEmail}</a>
-              </li>
-            )}
-            {site.contactPhone && <li>{site.contactPhone}</li>}
-            {site.location && <li>{site.location}</li>}
-            <li>
-              <Link to="/contact" className="hover:text-teal">Send a message</Link>
-            </li>
-          </ul>
-        </div>
+          ))}
+        </ul>
       </div>
-
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-ink-soft sm:flex-row sm:justify-between">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-charcoal/70 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Monetira. All rights reserved.</p>
-          <Link to="/privacy" className="hover:text-teal">Privacy Policy</Link>
+          <p className="flex gap-6">
+            {site.contactEmail && <a href={`mailto:${site.contactEmail}`} className="hover:text-teal">{site.contactEmail}</a>}
+            <Link to="/privacy" className="hover:text-teal">Privacy Policy</Link>
+          </p>
         </div>
       </div>
     </footer>

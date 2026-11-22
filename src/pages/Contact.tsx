@@ -1,56 +1,58 @@
-import { Mail, Phone, MapPin } from 'lucide-react'
-import PageHeader from '../components/PageHeader'
-import ContactForm from '../components/ContactForm'
+import { Link } from 'react-router-dom'
+import { Mail } from 'lucide-react'
+import { StudioPageHeader, Eyebrow } from '../components/Studio'
 import TallyEmbed from '../components/TallyEmbed'
-import Button from '../components/Button'
 import { site } from '../data/site'
-import { contactPage } from '../data/content'
+import { contactStudio } from '../data/studio'
 
 export default function Contact() {
   return (
     <>
-      <PageHeader eyebrow="Contact" title={contactPage.title}>
-        <p>{contactPage.intro}</p>
-      </PageHeader>
+      <StudioPageHeader eyebrow={contactStudio.eyebrow} title={contactStudio.title}>
+        <p>{contactStudio.intro}</p>
+      </StudioPageHeader>
 
-      <section className="py-16 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_320px]">
-          {site.contactTallyUrl ? <TallyEmbed urlOrId={site.contactTallyUrl} title="Contact form" /> : <ContactForm />}
-          <aside className="space-y-6">
-            {(site.contactEmail || site.contactPhone || site.location) && (
-              <div className="rounded-2xl border border-line bg-white p-6">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-bronze">Direct contact</h2>
-                <ul className="mt-4 space-y-3 text-sm">
-                  {site.contactEmail && (
-                    <li className="flex items-center gap-3">
-                      <Mail aria-hidden="true" className="h-4 w-4 text-teal" />
-                      <a href={`mailto:${site.contactEmail}`} className="hover:text-teal">{site.contactEmail}</a>
-                    </li>
-                  )}
-                  {site.contactPhone && (
-                    <li className="flex items-center gap-3">
-                      <Phone aria-hidden="true" className="h-4 w-4 text-teal" />
-                      {site.contactPhone}
-                    </li>
-                  )}
-                  {site.location && (
-                    <li className="flex items-center gap-3">
-                      <MapPin aria-hidden="true" className="h-4 w-4 text-teal" />
-                      {site.location}
-                    </li>
-                  )}
-                </ul>
-              </div>
-            )}
-            <div className="rounded-2xl border border-teal/25 bg-white p-6">
-              <h2 className="font-heading text-lg font-bold">Not sure where to start?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                The Free Business Snapshot is a quick way to begin. There is no obligation to purchase.
+      <section className="bg-ivory py-20">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_360px]">
+          {/* Public project inquiry form: set contactTallyUrl in data/site.ts */}
+          {site.contactTallyUrl ? (
+            <div>
+              <TallyEmbed urlOrId={site.contactTallyUrl} title="Project inquiry form" loadingLabel="Loading the project inquiry form..." />
+              <p className="mt-4 text-sm text-charcoal/70">
+                We use the information you provide to respond to your inquiry. Read our{' '}
+                <Link to="/privacy" className="font-semibold text-teal underline hover:text-teal-dark">Privacy Policy</Link>.
               </p>
-              <div className="mt-5">
-                <Button to="/snapshot" arrow>Free Snapshot</Button>
-              </div>
             </div>
+          ) : (
+            <div className="rounded-3xl border border-line bg-white p-8 md:p-12">
+              <h2 className="font-serif text-4xl font-normal">Project inquiry</h2>
+              <p className="mt-4 max-w-lg text-lg leading-relaxed text-ink-soft">{contactStudio.pending}</p>
+              {site.contactEmail && (
+                <a
+                  href={`mailto:${site.contactEmail}`}
+                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-charcoal px-6 py-3.5 font-semibold text-ivory transition-colors hover:bg-teal"
+                >
+                  <Mail aria-hidden="true" className="h-4 w-4" /> {site.contactEmail}
+                </a>
+              )}
+            </div>
+          )}
+
+          <aside>
+            <Eyebrow>{contactStudio.nextTitle}</Eyebrow>
+            <ol className="mt-6 border-t border-charcoal">
+              {contactStudio.next.map((step, i) => (
+                <li key={step} className="flex gap-4 border-b border-line py-5">
+                  <span className="font-serif text-3xl leading-none text-teal">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="leading-relaxed text-ink-soft">{step}</span>
+                </li>
+              ))}
+            </ol>
+            {site.contactEmail && (
+              <p className="mt-8 text-sm text-charcoal/70">
+                Prefer email? <a href={`mailto:${site.contactEmail}`} className="font-semibold text-teal hover:text-teal-dark">{site.contactEmail}</a>
+              </p>
+            )}
           </aside>
         </div>
       </section>

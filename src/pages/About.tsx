@@ -1,50 +1,43 @@
-import { Briefcase, Building2, Handshake, Users } from 'lucide-react'
-import PageHeader from '../components/PageHeader'
-import SectionHeading from '../components/SectionHeading'
-import CtaSection from '../components/CtaSection'
-import { aboutSection, aboutPage, finalCta } from '../data/content'
-
-const bgIcons = [Building2, Handshake, Users, Briefcase]
+import { StudioPageHeader, CtaBand, Eyebrow } from '../components/Studio'
+import { aboutStudio, workCta } from '../data/studio'
 
 export default function About() {
   return (
     <>
-      <PageHeader eyebrow={aboutSection.eyebrow} title={aboutSection.title}>
-        <p>{aboutSection.paragraphs[0]}</p>
-      </PageHeader>
+      <StudioPageHeader eyebrow={aboutStudio.eyebrow} title={aboutStudio.title} accent={aboutStudio.titleAccent}>
+        <p>{aboutStudio.intro}</p>
+      </StudioPageHeader>
 
-      <section className="bg-white py-24">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-2 md:gap-20">
-          <SectionHeading eyebrow={aboutPage.backgroundEyebrow} title={aboutPage.backgroundTitle} />
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {aboutPage.background.map((b, i) => {
-              const Icon = bgIcons[i] ?? Briefcase
-              return (
-                <li key={b} className="rounded-2xl border border-line bg-ivory p-6">
-                  <Icon aria-hidden="true" className="h-5 w-5 text-teal" strokeWidth={1.6} />
-                  <p className="mt-4 font-heading font-semibold leading-snug">{b}</p>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-2 md:gap-20">
-          <SectionHeading eyebrow={aboutPage.independentEyebrow} title={aboutPage.independentTitle} />
+      <section className="bg-ivory py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
-            {aboutPage.independent.map((p) => (
-              <p key={p} className="mb-5 text-lg leading-relaxed text-ink-soft">{p}</p>
+            <Eyebrow>Our story</Eyebrow>
+            <h2 className="mt-5 font-serif text-5xl font-normal leading-[1]">{aboutStudio.storyTitle}</h2>
+          </div>
+          <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
+            {aboutStudio.story.map((p) => (
+              <p key={p}>{p}</p>
             ))}
-            <p className="mt-8 border-l-2 border-bronze pl-5 font-heading text-lg font-semibold">
-              {aboutSection.paragraphs[1]}
-            </p>
           </div>
         </div>
       </section>
 
-      <CtaSection title={finalCta.title} supporting={finalCta.supporting} button={finalCta.button} to="/snapshot" />
+      <section className="border-t border-line bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <Eyebrow>Our approach</Eyebrow>
+          <h2 className="mt-5 font-serif text-5xl font-normal leading-[1]">{aboutStudio.valuesTitle}</h2>
+          <ul className="mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {aboutStudio.values.map((v) => (
+              <li key={v.title} className="border-t border-charcoal pt-6">
+                <h3 className="font-serif text-3xl font-normal">{v.title}</h3>
+                <p className="mt-3 leading-relaxed text-ink-soft">{v.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <CtaBand compact title={workCta.title} supporting={workCta.supporting} button={workCta.button} />
     </>
   )
 }

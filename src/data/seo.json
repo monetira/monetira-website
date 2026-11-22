@@ -1,0 +1,33 @@
+{
+  "siteUrl": "https://monetira.com",
+  "pages": {
+    "/": {
+      "title": "Monetira | Websites & Digital Solutions for Small Businesses",
+      "description": "Professional, custom websites for small businesses. Personal service, clear introductory pricing from $300, and a website you own."
+    },
+    "/work": {
+      "title": "Our Work | Monetira",
+      "description": "Selected websites designed and built by Monetira, from boutique retail to advocacy and musician legacy sites."
+    },
+    "/services": {
+      "title": "Services & Pricing | Monetira",
+      "description": "Website design for small businesses: one-page sites from $300, five-page business sites from $500, plus forms, updates and an optional care plan."
+    },
+    "/about": {
+      "title": "About | Monetira",
+      "description": "Monetira is a boutique web design studio built on business experience, offering personal service and websites designed around your goals."
+    },
+    "/contact": {
+      "title": "Contact | Monetira",
+      "description": "Tell us about your business and the website you need. We will reply by email with next steps, with no obligation."
+    },
+    "/privacy": {
+      "title": "Privacy Policy | Monetira",
+      "description": "How Monetira collects, uses and protects the information you share through our project inquiry form and client questionnaire."
+    },
+    "/website-vision": {
+      "title": "Website Vision Questionnaire | Monetira",
+      "noindex": true
+    }
+  }
+}

@@ -1,42 +1,53 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import { navLinks } from '../data/site'
+import { studio } from '../data/studio'
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
 
-  useEffect(() => setOpen(false), [location.pathname])
+  useEffect(() => setOpen(false), [location.pathname, location.hash])
 
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-[15px] font-medium transition-colors ${isActive ? 'text-teal' : 'text-charcoal/75 hover:text-charcoal'}`
+  const isActive = (to: string) => {
+    const current = location.pathname + location.hash
+    return to === '/' ? current === '/' : current === to
+  }
+  const linkClass = (to: string) =>
+    `text-[15px] font-medium transition-colors ${isActive(to) ? 'text-teal' : 'text-charcoal/70 hover:text-charcoal'}`
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ivory/90 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <header className="sticky top-0 z-50 border-b border-line bg-ivory/95 backdrop-blur">
+      <nav aria-label="Main" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link to="/" className="flex items-center gap-3" aria-label="Monetira home">
-          <Logo size={52} />
+          <Logo size={44} />
+          <span className="leading-tight">
+            <span className="block font-serif text-[26px] leading-none text-charcoal">Monetira</span>
+            <span className="hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-charcoal/70 sm:block">
+              {studio.descriptor}
+            </span>
+          </span>
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((l) => (
-            <NavLink key={l.to} to={l.to} className={linkClass}>
+            <Link key={l.to} to={l.to} className={linkClass(l.to)} aria-current={isActive(l.to) ? 'page' : undefined}>
               {l.label}
-            </NavLink>
+            </Link>
           ))}
           <Link
-            to="/snapshot"
-            className="rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-dark"
+            to="/contact"
+            className="rounded-full bg-charcoal px-5 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-teal"
           >
-            Free Snapshot
+            Start a Project
           </Link>
         </div>
 
         <button
           type="button"
-          className="rounded-md p-2 md:hidden"
+          className="rounded-md p-2 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -47,21 +58,18 @@ export default function Navigation() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-line bg-ivory px-6 pb-6 md:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-ivory px-6 pb-6 lg:hidden">
           <ul className="flex flex-col gap-1 pt-3">
             {navLinks.map((l) => (
               <li key={l.to}>
-                <NavLink to={l.to} className={({ isActive }) => `block py-3 ${linkClass({ isActive })}`}>
+                <Link to={l.to} className={`block py-3 ${linkClass(l.to)}`} aria-current={isActive(l.to) ? 'page' : undefined}>
                   {l.label}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>
-          <Link
-            to="/snapshot"
-            className="mt-3 block rounded-full bg-teal px-5 py-3 text-center font-semibold text-white"
-          >
-            Get Your Free Business Snapshot
+          <Link to="/contact" className="mt-3 block rounded-full bg-charcoal px-5 py-3 text-center font-semibold text-ivory">
+            Start a Project
           </Link>
         </div>
       )}

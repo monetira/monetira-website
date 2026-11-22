@@ -156,6 +156,6 @@ export const snapshotPage = {
 
 // ---------------- CONTACT PAGE ----------------
 export const contactPage = {
-  title: 'Start a Conversation.',
-  intro: 'Have a question, or ready to request a Business Opportunity Audit? Send a message and we will reply by email.',
+  title: 'Start Your Project.',
+  intro: 'Tell us a little about your business and what you need. We will reply by email with next steps, with no obligation.',
 }

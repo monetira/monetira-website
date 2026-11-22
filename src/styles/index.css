@@ -2,14 +2,19 @@
 
 /* Monetira design system. Change brand colors and fonts here. */
 @theme {
-  --color-charcoal: #252525;
-  --color-ivory: #f7f5f0;
-  --color-teal: #287d80;
-  --color-teal-dark: #1f6467;
-  --color-bronze: #c39a63;
+  --color-charcoal: #202525;
+  --color-ivory: #f5f0e7;
+  --color-teal: #185d60;
+  --color-teal-dark: #124749;
+  --color-gold: #b99b68;
+  --color-gold-light: #d4bd92;
+  --color-gold-deep: #7d6334; /* gold for small text on light backgrounds (AA contrast) */
+  --color-gold-pale: #e6d6b4; /* gold for small text on teal (AA contrast) */
+  --color-bronze: #b99b68; /* legacy name, same as gold */
   --color-ink-soft: #55534f; /* body text on light backgrounds */
   --color-line: #e6e2d9; /* hairline borders */
 
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --font-heading: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 }
@@ -50,9 +55,9 @@
   }
 }
 
+/* Movement only: content is never hidden, even if the animation does not run. */
 @keyframes fade-up {
   from {
-    opacity: 0;
     transform: translateY(12px);
   }
   to {
