@@ -1,5 +1,6 @@
 import HeroPhoto from '../components/HeroPhoto'
 import { Link } from 'react-router-dom'
+import { site } from '../data/site'
 
 const checklist = [
   { title: 'Follow up on every completed job within 3 days', note: 'Repeat requests depend on memory, not a routine.', pri: ['High priority', 'p-high'], effort: 'Low effort' },
@@ -7,6 +8,33 @@ const checklist = [
   { title: 'Write down the scheduling process', note: 'Only one person knows how jobs get booked.', pri: ['Medium priority', 'p-med'], effort: 'Low effort' },
   { title: "Update the website's services and contact page", note: 'Referrals check it first. It lists retired services.', pri: ['Plan next', 'p-low'], effort: 'Medium effort' },
 ]
+
+const includes = [
+  'Personalized business assessment',
+  'Identification of potential cost-saving opportunities',
+  'Review of operational and sales opportunities',
+  'Written findings and recommendations',
+  '3-5 prioritized action items',
+]
+
+// Proposed wording, pending approval by each person (see site.testimonialsApproved)
+const testimonials = [
+  {
+    quote:
+      'Monetira helped us take a fresh look at our business, identify areas that deserved more attention, and establish practical priorities. The recommendations were straightforward, thoughtful and relevant to our needs.',
+    initials: 'C.P.',
+    business: 'Carriage House Door Services',
+    service: 'Business Review',
+  },
+  {
+    quote:
+      'Monetira helped bring our vision to life with a professional website that reflects our mission and communicates our purpose clearly. The attention to detail and personalized approach made all the difference.',
+    initials: 'C.M.',
+    business: 'Paw Protection Alliance',
+    service: 'Website Development',
+  },
+]
+const showTestimonials = site.testimonialsApproved || import.meta.env.VITE_PREVIEW_FILE === '1'
 
 const receive = [
   ['01', 'A concise written assessment', 'A plain-language summary of what we found in the areas you chose, without jargon or filler.'],
@@ -80,6 +108,25 @@ export default function Home() {
             </ol>
           </div>
         </div>
+        <div className="wrap">
+          <div className="pricing" id="pricing">
+            <div>
+              <span className="eyebrow">Introductory Pricing</span>
+              <h3>Business Efficiency &amp; Opportunity Review</h3>
+              <p className="price"><span>Starting at</span> $295</p>
+              <p className="fine">
+                Final pricing is confirmed before work begins. Additional implementation services are quoted separately.
+              </p>
+              <Link className="btn btn-primary" to="/contact">Request a Business Review</Link>
+            </div>
+            <div className="pricing-incl">
+              <h4>Includes</h4>
+              <ul>
+                {includes.map((i) => <li key={i}>{i}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="section section-ivory" id="review">
@@ -138,6 +185,29 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {showTestimonials && (
+        <section className="section section-ivory" aria-labelledby="testimonials-title">
+          <div className="wrap">
+            <div className="section-head">
+              <h2 id="testimonials-title">What Others Say</h2>
+            </div>
+            <div className="quotes">
+              {testimonials.map((t) => (
+                <figure className="quote" key={t.initials}>
+                  <blockquote>{t.quote}</blockquote>
+                  <figcaption>
+                    <b>{t.initials}</b>
+                    <span>{t.business}</span>
+                    <span className="quote-svc">{t.service}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="fine quote-note">Testimonials provided by family members of Monetira's founder.</p>
+          </div>
+        </section>
+      )}
 
       <section className="final">
         <div className="wrap">

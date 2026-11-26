@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom'
-import { publishedProjects } from '../data/projects'
-import { asset } from '../data/site'
 
 const services = [
   {
@@ -47,38 +45,8 @@ export default function Services() {
           </div>
           <p className="note-box">
             Additional services are available by request and quoted individually. Availability is limited so each
-            project gets proper attention.
+            project gets proper attention. Website examples can be provided privately upon request.
           </p>
-        </div>
-      </section>
-
-      <section className="section section-ivory" id="work">
-        <div className="wrap">
-          <div className="section-head">
-            <span className="eyebrow">Selected Website Work</span>
-            <h2>Websites designed and built by Monetira.</h2>
-            <p className="lede">Independently developed projects, shown as examples of design and build quality.</p>
-          </div>
-          <div className="work-grid">
-            {publishedProjects.map((p) => (
-              <article className="work" key={p.slug}>
-                <div className="work-shot">
-                  {p.desktopImage && <img src={asset(p.desktopImage)} alt={`${p.name} website, desktop view`} loading="lazy" />}
-                </div>
-                <div className="work-body">
-                  <span className="cat">{p.category}</span>
-                  <h3>{p.name}</h3>
-                  <p>{p.description}</p>
-                  <div className="tags">{p.features.map((f) => <span key={f}>{f}</span>)}</div>
-                  {p.liveUrl && (
-                    <a href={p.liveUrl} target="_blank" rel="noopener">
-                      Visit website <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 

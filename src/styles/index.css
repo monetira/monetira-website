@@ -378,3 +378,34 @@ p + p { margin-top: 1rem; }
   .foundation { padding: 24px 20px 20px; }
   .about-pair h2 { font-size: 1.45rem; }
 }
+
+/* Introductory pricing (inside What You'll Receive) */
+.pricing { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; background: var(--ivory); border: 1px solid var(--line); border-top: 5px solid var(--teal); border-radius: 10px; padding: 40px 44px; }
+.pricing h3 { font-size: 1.55rem; line-height: 1.3; margin-bottom: 12px; }
+.pricing .price { font-family: var(--serif); font-weight: 900; font-size: 2.6rem; color: var(--charcoal); line-height: 1.1; margin-bottom: 6px; }
+.pricing .price span { display: block; font-family: var(--sans); font-weight: 700; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.pricing .fine { margin: 10px 0 24px; max-width: 440px; }
+.pricing-incl h4 { font-family: var(--sans); font-weight: 700; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.pricing-incl ul { list-style: none; }
+.pricing-incl li { position: relative; padding: 12px 0 12px 30px; border-top: 1px solid var(--line); font-size: 1.05rem; color: var(--charcoal); }
+.pricing-incl li::before { content: "\2713"; position: absolute; left: 2px; top: 11px; color: var(--teal); font-weight: 700; }
+
+/* Testimonials */
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.quote { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 40px 36px 32px; display: flex; flex-direction: column; }
+.quote blockquote { position: relative; font-size: 1.12rem; line-height: 1.7; color: var(--charcoal); padding-top: 34px; flex: 1; }
+.quote blockquote::before { content: "\201C"; position: absolute; top: -14px; left: -4px; font-family: var(--serif); font-weight: 900; font-size: 4rem; line-height: 1; color: var(--gold-light); }
+.quote figcaption { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line-soft); font-size: .98rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 2px; }
+.quote figcaption b { font-family: var(--serif); color: var(--charcoal); }
+.quote-svc { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+.quote-note { margin-top: 24px; text-align: center; }
+
+@media (max-width: 980px) {
+  .pricing, .quotes { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 640px) {
+  .pricing { padding: 28px 22px; margin-top: 40px; }
+  .pricing .price { font-size: 2.2rem; }
+  .pricing .btn { width: 100%; }
+  .quote { padding: 32px 22px 24px; }
+}

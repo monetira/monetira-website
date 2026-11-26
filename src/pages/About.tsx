@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 // No personal name, photo, or employer names at this time.
 const foundation = [
   "Bachelor's degree in Organizational Leadership, Texas A&M University",
-  '14 years of healthcare operations and business management experience',
-  'National client engagement experience',
-  'Vendor management and operational coordination experience',
+  'Business operations and healthcare management',
+  'National client engagement and customer success',
+  'Sales and business development',
+  'Vendor management, negotiation and cost efficiency',
+  'Strategic planning and operational improvement',
 ]
 
 export default function About() {
@@ -38,7 +40,7 @@ export default function About() {
           </div>
           <aside className="foundation" aria-labelledby="foundation-title">
             <h2 id="foundation-title">Professional Foundation</h2>
-            <p className="foundation-note">The founder's background</p>
+            <p className="foundation-note">More than two decades of professional business experience.</p>
             <ul>
               {foundation.map((f) => (
                 <li key={f}>{f}</li>
