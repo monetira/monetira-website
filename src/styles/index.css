@@ -59,13 +59,15 @@ p + p { margin-top: 1rem; }
 .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .brand img { width: 64px; height: 64px; }
 .brand span { font-family: var(--sans); font-weight: 700; font-size: 1.85rem; color: var(--charcoal); letter-spacing: .06em; line-height: 1; }
-.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
 .nav-links a { color: var(--charcoal); text-decoration: none; font-weight: 600; font-size: 1.05rem; padding: 6px 0; border-bottom: 3px solid transparent; }
 .nav-links a:hover, .nav-links a.active { color: var(--teal); }
 .nav-links a.active { color: var(--charcoal); font-weight: 700; border-bottom-color: #D9A94A; }
 .nav-links a.btn { color: var(--white); padding: 11px 20px; font-size: .98rem; text-decoration: none; border-bottom: 2px solid var(--teal); }
 .menu-btn { display: none; background: var(--white); border: 2px solid var(--charcoal); border-radius: 6px; padding: 8px 12px; font: 700 1rem var(--sans); color: var(--charcoal); cursor: pointer; }
 .mobile-menu { display: none; }
+/* Header uses the same width as the hero text so the logo lines up with it */
+.site-header .nav { max-width: 1290px; }
 
 /* Hero */
 .hero { background: var(--ivory); padding: 80px 0 88px; border-bottom: 1px solid var(--line); }
