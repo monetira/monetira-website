@@ -1,40 +1,78 @@
 import { Link } from 'react-router-dom'
 
+// About Us page: approved copy (Nov 26, 2026). Business voice ("we", "our").
+// No personal name, photo, or employer names at this time.
+const foundation = [
+  "Bachelor's degree in Organizational Leadership, Texas A&M University",
+  '14 years of healthcare operations and business management experience',
+  'National client engagement experience',
+  'Vendor management and operational coordination experience',
+]
+
 export default function About() {
   return (
     <>
       <section className="page-head">
         <div className="wrap">
-          <span className="eyebrow">About Monetira</span>
-          <h1>An experienced outside perspective.</h1>
-          <p className="lede">
-            When you run a business every day, it's hard to step back and see where time, money, and effort are
-            slipping away. Monetira exists to provide that view.
-          </p>
+          <span className="eyebrow">About Us</span>
+          <h1>About Monetira</h1>
+          <p className="about-sub">Real Business Experience. Practical Solutions.</p>
         </div>
       </section>
 
       <section className="section">
-        <div className="wrap two-col">
-          <div>
-            <h2>Built on real operating experience.</h2>
+        <div className="wrap about-grid">
+          <div className="about-copy">
             <p>
-              Monetira is founded on years of professional experience in business operations, client engagement, and
-              vendor management, coordinating complex programs where budgets, timelines, and details all had to work.
+              Monetira was founded on a simple belief: small-business owners deserve access to experienced business
+              guidance without the complexity and expense often associated with traditional consulting.
             </p>
             <p>
-              That experience is now focused on helping small business owners look at their costs, processes, vendors,
-              and customer follow-up with fresh eyes, then decide what to fix first.
+              Our foundation is built on years of professional experience in business operations, healthcare
+              management, national client engagement, vendor management and organizational leadership.
+            </p>
+            <p>
+              We understand the challenges of managing expenses, maintaining customer relationships, coordinating
+              operations and identifying opportunities for improvement.
             </p>
           </div>
-          <div>
-            <h2>How we work.</h2>
-            <ul className="receive-list">
-              <li><span className="k">01</span><div><h3>Independent</h3><p>We don't sell software or take commissions from vendors.</p></div></li>
-              <li><span className="k">02</span><div><h3>Practical</h3><p>Every recommendation comes with a realistic next step.</p></div></li>
-              <li><span className="k">03</span><div><h3>Honest</h3><p>We separate what you told us from what we verified, and we don't promise results we can't support.</p></div></li>
-              <li><span className="k">04</span><div><h3>Focused</h3><p>Each review covers up to three areas you choose, so the advice stays specific.</p></div></li>
+          <aside className="foundation" aria-labelledby="foundation-title">
+            <h2 id="foundation-title">Professional Foundation</h2>
+            <p className="foundation-note">The founder's background</p>
+            <ul>
+              {foundation.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
             </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section className="section section-ivory">
+        <div className="wrap about-pair">
+          <div>
+            <h2>An Independent Perspective</h2>
+            <p>
+              When you're busy running a business, it can be difficult to step back and recognize where improvements
+              can be made.
+            </p>
+            <p>
+              Monetira provides an independent perspective, helping business owners identify overlooked opportunities and
+              determine which actions deserve their attention first.
+            </p>
+            <p>Our approach is straightforward, personalized and focused on practical recommendations.</p>
+          </div>
+          <div>
+            <h2>Beyond the Business Review</h2>
+            <p>
+              When additional assistance is needed, Monetira also offers professional website design, website updates
+              and selected implementation services.
+            </p>
+            <p>
+              Our goal is to help small businesses make informed decisions, operate more efficiently and build a
+              stronger foundation for the future.
+            </p>
+            <p><Link to="/services">See Additional Services</Link></p>
           </div>
         </div>
       </section>
@@ -44,6 +82,7 @@ export default function About() {
           <h2>Ready for a clear view of your business?</h2>
           <p>Start with a short inquiry. We'll reply with next steps for your review.</p>
           <div className="cta-row"><Link className="btn btn-white" to="/contact">Request a Business Review</Link></div>
+          <p className="brand-line">Every Customer Matters. Every Dollar Counts.</p>
         </div>
       </section>
     </>
