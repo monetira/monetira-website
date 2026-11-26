@@ -31,6 +31,8 @@ const testimonials = [
       'Monetira helped bring our vision to life with a professional website that reflects our mission and communicates our purpose clearly. The attention to detail and personalized approach made all the difference.',
     initials: 'C.M.',
     business: 'Paw Protection Alliance',
+    url: 'https://pawprotectionalliance.org',
+    urlLabel: 'pawprotectionalliance.org',
     service: 'Website Development',
   },
 ]
@@ -199,6 +201,11 @@ export default function Home() {
                   <figcaption>
                     <b>{t.initials}</b>
                     <span>{t.business}</span>
+                    {'url' in t && (
+                      <a className="quote-link" href={t.url} target="_blank" rel="noopener noreferrer">
+                        {t.urlLabel}
+                      </a>
+                    )}
                     <span className="quote-svc">{t.service}</span>
                   </figcaption>
                 </figure>
