@@ -29,7 +29,8 @@ export default function Contact() {
             <h3 style={{ marginTop: 24 }}>Prefer email?</h3>
             <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
             <p style={{ fontSize: '.95rem', marginTop: 16 }}>
-              Please don't include passwords, bank or account information, or tax documents. See our{' '}
+              Your information is used to respond to your inquiry and provide requested services. Please do not submit
+              sensitive personal or financial information. See our{' '}
               <Link to="/privacy">Privacy Policy</Link>.
             </p>
           </aside>

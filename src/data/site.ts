@@ -31,7 +31,7 @@ export const site = {
   formProviderName: 'Tally', // shown in the Privacy Policy
 
   // Privacy Policy "last updated" date
-  privacyLastUpdated: 'November 2026',
+  privacyLastUpdated: 'November 26, 2026',
 }
 
 // -------------------------------------------------------------
