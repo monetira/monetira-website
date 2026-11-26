@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { asset } from '../data/site'
+import { Menu, X } from 'lucide-react'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -35,9 +36,6 @@ export default function Navigation() {
           {links.map((l) => (
             <li key={l.to}>{item(l)}</li>
           ))}
-          <li>
-            <Link className="btn btn-primary" to="/contact">Request a Review</Link>
-          </li>
         </ul>
         <button
           className="menu-btn"
@@ -45,7 +43,8 @@ export default function Navigation() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? 'Close' : 'Menu'}
+          {open ? <X aria-hidden="true" size={22} strokeWidth={2.5} /> : <Menu aria-hidden="true" size={22} strokeWidth={2.5} />}
+          <span>{open ? 'Close' : 'Menu'}</span>
         </button>
       </div>
       <div id="mobile-menu" className={`mobile-menu${open ? ' open' : ''}`}>
@@ -53,9 +52,6 @@ export default function Navigation() {
           {links.map((l) => (
             <li key={l.to}>{item(l)}</li>
           ))}
-          <li>
-            <Link className="btn btn-primary" to="/contact">Request a Business Review</Link>
-          </li>
         </ul>
       </div>
     </header>
