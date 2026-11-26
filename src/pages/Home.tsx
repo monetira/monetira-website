@@ -1,11 +1,5 @@
+import HeroSlideshow from '../components/HeroSlideshow'
 import { Link } from 'react-router-dom'
-
-const checklist = [
-  { title: 'Follow up on every completed job within 3 days', note: 'Repeat requests depend on memory, not a routine.', pri: ['High priority', 'p-high'], effort: 'Low effort' },
-  { title: 'Compare quotes on the two largest recurring vendor bills', note: 'Neither contract has been reviewed in over 3 years.', pri: ['High priority', 'p-high'], effort: 'Medium effort' },
-  { title: 'Write down the scheduling process', note: 'Only one person knows how jobs get booked.', pri: ['Medium priority', 'p-med'], effort: 'Low effort' },
-  { title: "Update the website's services and contact page", note: 'Referrals check it first. It lists retired services.', pri: ['Plan next', 'p-low'], effort: 'Medium effort' },
-]
 
 const receive = [
   ['01', 'A concise written assessment', 'A plain-language summary of what we found in the areas you chose, without jargon or filler.'],
@@ -32,59 +26,7 @@ const steps = [
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="wrap hero-grid">
-          <div>
-            <span className="eyebrow">Independent Business Reviews</span>
-            <h1>
-              <span className="line">Too Many Expenses.</span>
-              <span className="line">Not Enough Sales.</span>
-              <span className="start">Where Do You Start?</span>
-              <span className="here">RIGHT HERE.</span>
-            </h1>
-            <p className="lede">
-              Running a small business is demanding enough. Finding ways to reduce costs, improve operations, and
-              uncover missed opportunities shouldn't mean another full-time job.
-            </p>
-            <p className="lede">
-              Monetira provides an independent business review with practical findings and a prioritized action plan,
-              so you know where to focus first.
-            </p>
-            <div className="cta-row">
-              <Link className="btn btn-primary" to="/contact">Request a Business Review</Link>
-              <Link className="btn btn-secondary" to="/#how">See How It Works</Link>
-            </div>
-            <p className="trust">
-              <i><span>&#10003;</span>Independent</i>
-              <i><span>&#10003;</span>Plain language</i>
-              <i><span>&#10003;</span>No long-term contracts</i>
-            </p>
-          </div>
-
-          <div className="report" aria-label="Sample prioritized action checklist">
-            <div className="report-head">
-              <strong>Prioritized Action Checklist</strong>
-              <span className="tag">Sample</span>
-            </div>
-            <div className="report-meta"><b>Business:</b> Commercial service company, 14 employees</div>
-            <ol>
-              {checklist.map((c, i) => (
-                <li key={c.title}>
-                  <div className="num">{i + 1}</div>
-                  <div>
-                    <h4>{c.title}</h4>
-                    <p>{c.note}</p>
-                    <div className="pills">
-                      <span className={`pill ${c.pri[1]}`}>{c.pri[0]}</span>
-                      <span className="pill p-effort">{c.effort}</span>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <HeroSlideshow />
 
       <section className="section">
         <div className="wrap receive-grid">
