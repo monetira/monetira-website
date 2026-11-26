@@ -2,8 +2,7 @@
 
 React + Vite + TypeScript + Tailwind CSS site for Monetira.
 
-- **Preview address:** https://monetira.github.io/monetira-website/
-- **Future live address:** https://monetira.com (not connected yet)
+- **Live address:** https://monetira.com (not connected yet)
 
 ## What to edit
 
@@ -14,21 +13,25 @@ React + Vite + TypeScript + Tailwind CSS site for Monetira.
 | Brand colors and fonts | `src/styles/index.css` (the `@theme` block) |
 | Logo | `public/images/monetira-logo.png` (original kept as `monetira-logo-original.png`) |
 
-Editing a file on GitHub (pencil icon, then "Commit changes") automatically rebuilds the site on Cloudflare Pages in about 2 minutes.
+Editing a file on GitHub (pencil icon, then "Commit changes") on the `main` branch automatically rebuilds the site on GitHub Pages in about 2 minutes.
 
 ## Forms
 
 Forms use Tally. The Contact page embeds the form set in `contactTallyUrl`, and the private /website-vision page embeds the form set in `visionTallyUrl` (both in `src/data/site.ts`). No passwords or API keys are needed or stored in this project.
 
-## Deployment (Cloudflare Pages)
+## Deployment (GitHub Pages)
 
-The code lives in this GitHub repository. Cloudflare Pages is connected to it and rebuilds the site on every change to `main`.
+The site is built and published by the GitHub Actions workflow in `.github/workflows/deploy.yml` every time `main` changes.
 
-Cloudflare Pages settings:
-- Framework preset: Vite (or None)
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Environment variable: `NODE_VERSION` = `22`
+One-time settings (repository Settings > Pages):
+- Source: GitHub Actions
+- Custom domain: monetira.com, then Enforce HTTPS once it becomes available
+
+DNS for monetira.com (at the domain's DNS provider):
+- A records for monetira.com: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+- CNAME record for www: monetira.github.io
+
+The build uses `base: '/'`, so it is meant to be viewed at monetira.com, not at the github.io project address.
 
 ## Search engines
 

@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  // Hosted on Cloudflare Pages, which serves the site from the root
-  // (both the *.pages.dev preview address and monetira.com).
+  // Hosted on GitHub Pages with the custom domain monetira.com, which serves
+  // the site from the root.
   base: '/',
   plugins: [react(), tailwindcss()],
 })
