@@ -4,12 +4,10 @@ import seo from './data/seo.json'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Work from './pages/Work'
 import Services from './pages/Services'
 import About from './pages/About'
-import WebsiteVision from './pages/WebsiteVision'
-// Audit and Snapshot pages (src/pages) and the old About/Contact/Home (src/legacy) are kept
-// but are no longer linked or routed.
+// Older pages (Work, WebsiteVision, Audit, Snapshot, src/legacy) are kept in the
+// project but are no longer linked or routed. Portfolio now lives on /services.
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import NotFound from './pages/NotFound'
@@ -36,7 +34,7 @@ function PageEffects() {
     if (hash) {
       const el = document.getElementById(hash.slice(1))
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
+        el.scrollIntoView()
         return
       }
     }
@@ -48,21 +46,14 @@ function PageEffects() {
 export default function App() {
   return (
     <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2"
-      >
-        Skip to content
-      </a>
+      <a href="#main" className="skip">Skip to content</a>
       <PageEffects />
       <Navigation />
       <main id="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/work" element={<Work />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
-          <Route path="/website-vision" element={<WebsiteVision />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />

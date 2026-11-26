@@ -2,32 +2,24 @@
   "siteUrl": "https://monetira.com",
   "pages": {
     "/": {
-      "title": "Monetira | Websites & Digital Solutions for Small Businesses",
-      "description": "Professional, custom websites for small businesses. Personal service, clear introductory pricing from $300, and a website you own."
-    },
-    "/work": {
-      "title": "Our Work | Monetira",
-      "description": "Selected websites designed and built by Monetira, from boutique retail to advocacy and musician legacy sites."
+      "title": "Monetira | Independent Business Reviews for Small Business Owners",
+      "description": "Too many expenses, not enough sales? Monetira provides independent business reviews with practical findings and a prioritized action plan, so you know where to focus first."
     },
     "/services": {
-      "title": "Services & Pricing | Monetira",
-      "description": "Website design for small businesses: one-page sites from $300, five-page business sites from $500, plus forms, updates and an optional care plan."
+      "title": "Additional Services | Monetira",
+      "description": "Website design, website updates, and selected implementation assistance from Monetira, offered by request alongside our business reviews."
     },
     "/about": {
       "title": "About | Monetira",
-      "description": "Monetira is a boutique web design studio built on business experience, offering personal service and websites designed around your goals."
+      "description": "Monetira offers small business owners an experienced outside perspective, built on years of business operations, client engagement, and vendor management experience."
     },
     "/contact": {
-      "title": "Contact | Monetira",
-      "description": "Tell us about your business and the website you need. We will reply by email with next steps, with no obligation."
+      "title": "Request a Business Review | Monetira",
+      "description": "Tell us about your business and your main concerns. We'll reply by email with next steps for your review, with no obligation."
     },
     "/privacy": {
       "title": "Privacy Policy | Monetira",
-      "description": "How Monetira collects, uses and protects the information you share through our project inquiry form and client questionnaire."
-    },
-    "/website-vision": {
-      "title": "Website Vision Questionnaire | Monetira",
-      "noindex": true
+      "description": "How Monetira collects and uses information from inquiries and business reviews, including the third-party and AI-assisted tools that help process it."
     }
   }
 }

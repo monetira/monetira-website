@@ -7,7 +7,7 @@
 export const site = {
   name: 'Monetira',
   domain: 'monetira.com',
-  headline: 'Great business. Wrong first impression?',
+  headline: 'Too Many Expenses. Not Enough Sales. Where Do You Start? RIGHT HERE.',
   // Previous headline (audit site): 'Find What Your Business Is Missing.'
   tagline: 'Every customer matters. Every dollar counts.',
 

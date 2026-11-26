@@ -53,9 +53,9 @@ export const projects: Project[] = [
   {
     slug: 'bob-graf-music',
     name: 'Bob Graf Music',
-    category: 'Musician legacy & archive',
+    category: 'Music history & archive',
     description:
-      'A legacy website for a jazz saxophonist, preserving his music, history, and career through archival research, historical documents, and multimedia presentation.',
+      'A website for a jazz saxophonist, presenting his music, history, and career through archival research, historical documents, and multimedia presentation.',
     features: ['Historical preservation', 'Archival research', 'Audio and video', 'Photo archive'],
     desktopImage: 'images/work/bob-graf-music-desktop.jpg',
     mobileImage: '',

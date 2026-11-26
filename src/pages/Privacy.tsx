@@ -1,99 +1,90 @@
-import { Link } from 'react-router-dom'
-import PageHeader from '../components/PageHeader'
 import { site } from '../data/site'
 
-// Plain-language privacy policy that reflects how this site actually works.
-// Have it reviewed before launch, and update it if you add analytics,
-// payments, or a different form provider.
 export default function Privacy() {
-  const provider = site.formProviderName || 'a third-party form service'
+  const email = site.contactEmail
   return (
     <>
-      <PageHeader eyebrow="Privacy Policy" title="Privacy Policy">
-        <p>Last updated: {site.privacyLastUpdated}</p>
-      </PageHeader>
+      <section className="page-head">
+        <div className="wrap">
+          <span className="eyebrow">Privacy Policy</span>
+          <h1>How we handle your information.</h1>
+          <p className="lede">Last updated: {site.privacyLastUpdated}</p>
+        </div>
+      </section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-3xl space-y-10 px-6 leading-relaxed text-ink-soft [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-bold [&_li]:ml-5 [&_li]:list-disc [&_ul]:space-y-1.5">
-          <div>
-            <h2>Overview</h2>
-            <p>
-              This policy explains what information Monetira collects through monetira.com and how it is used. We
-              collect only what we need to respond to your inquiry and, if you become a client, to plan and build your website.
-            </p>
-          </div>
+      <section className="section">
+        <div className="wrap narrow prose">
+          <p>
+            This policy explains what information Monetira collects through this website and during a business review,
+            how it is used, and which outside services help process it. We aim to keep it plain and accurate.
+          </p>
 
-          <div>
-            <h2>Information you provide</h2>
-            <p>We collect information only when you choose to send it to us through one of two forms:</p>
-            <ul className="mt-3">
-              <li>
-                <strong className="text-charcoal">Project inquiry form</strong> (on our Contact page): your name, email
-                address, business name, and the details you share about your business and your project.
-              </li>
-              <li>
-                <strong className="text-charcoal">Website Vision questionnaire</strong> (sent privately to clients after
-                we agree on a project): information about your business, customers, services, branding, visual
-                preferences, website content, pages, and domain.
-              </li>
-            </ul>
-            <p className="mt-3">
-              Please do not submit passwords, payment card details, financial account numbers, or other sensitive
-              personal data through either form.
-            </p>
-          </div>
+          <h2>Information we collect</h2>
+          <ul>
+            <li><b>Inquiry form:</b> your name, email address, business name, basic business details, and the concerns you choose to share.</li>
+            <li><b>Business review questionnaire (clients only):</b> information about how your business operates, such as expenses, vendors, processes, and customer follow-up, at the level of detail you choose to provide.</li>
+            <li><b>Email:</b> anything you send us directly by email.</li>
+          </ul>
+          <p>
+            We ask that you do not send passwords, bank or account information, tax returns, or personal information
+            about your employees or customers. If you include something we didn't ask for, we may delete it.
+          </p>
 
-          <div>
-            <h2>How we use it</h2>
-            <ul>
-              <li>To respond to your inquiry and discuss your project</li>
-              <li>To prepare a proposal and agree on scope</li>
-              <li>To design and build your website if you become a client</li>
-              <li>To follow up about the services you have asked about</li>
-            </ul>
-            <p className="mt-3">We do not sell or rent your information, and we do not add you to a mailing list without your permission.</p>
-          </div>
+          <h2>How we use it</h2>
+          <ul>
+            <li>To respond to your inquiry and communicate with you about a review or other service.</li>
+            <li>To evaluate your business and prepare your findings, recommendations, and action checklist.</li>
+            <li>To keep basic records of our client work.</li>
+          </ul>
+          <p>We do not sell your information, and we do not use it for advertising.</p>
 
-          <div>
-            <h2>How forms are processed</h2>
-            <p>
-              Both forms are provided by {provider}, a third-party form service. Your answers are submitted to and
-              stored by {provider} on our behalf, and a notification is sent to our business email so we can reply.
-              This website does not store form submissions itself. {provider}'s handling of data is described in its
-              own privacy policy.
-            </p>
-          </div>
+          <h2>Services that help process your information</h2>
+          <ul>
+            <li>
+              <b>Tally.</b> Our inquiry form and questionnaires are built with Tally, a third-party form service. Your
+              answers are submitted to and stored by Tally, which may use cookies to operate the form. Tally's own
+              privacy policy applies to its handling of your data.
+            </li>
+            <li>
+              <b>Email.</b> Form notifications and our correspondence with you pass through our email provider.
+            </li>
+            <li>
+              <b>AI-assisted tools.</b> We may use AI-assisted tools, such as ChatGPT or Claude, to help organize your
+              answers, analyze information, and draft materials for your review. These are tools we use to support our
+              work. Every finding and recommendation is reviewed by a person before you receive it.
+            </li>
+            <li>
+              <b>Website hosting.</b> Our hosting provider may automatically record basic technical information, such
+              as IP addresses and browser type, when you visit the site. This website does not use advertising or
+              analytics trackers.
+            </li>
+          </ul>
+          <p>
+            Because these services are operated by other companies, we can't control or guarantee how they store or
+            secure information, but we choose reputable services and share only what is needed.
+          </p>
 
-          <div>
-            <h2>Cookies and analytics</h2>
-            <p>
-              This website does not use advertising cookies or analytics tracking. The site is hosted on Cloudflare Pages,
-              which may record basic technical information, such as IP addresses, for security and operations.
-            </p>
-          </div>
+          <h2>How long we keep it</h2>
+          <p>
+            We keep inquiry and review information only as long as reasonably needed to provide our services and keep
+            basic business records. You can ask us to delete your information at any time.
+          </p>
 
-          <div>
-            <h2>Keeping and deleting your information</h2>
-            <p>
-              We keep your information only as long as needed for the purposes above. You can ask us to access,
-              correct, or delete your information at any time by{' '}
-              {site.contactEmail ? (
-                <>
-                  emailing <a href={`mailto:${site.contactEmail}`} className="font-semibold text-teal underline">{site.contactEmail}</a>
-                </>
-              ) : (
-                <>
-                  using our <Link to="/contact" className="font-semibold text-teal underline">contact form</Link>
-                </>
-              )}
-              .
-            </p>
-          </div>
+          <h2>Your choices</h2>
+          <p>
+            You can request a copy of the information you've given us, ask us to correct it, or ask us to delete it by
+            emailing <a href={`mailto:${email}`}>{email}</a>. Information already processed by third-party services may
+            also be subject to their own deletion processes.
+          </p>
 
-          <div>
-            <h2>Changes to this policy</h2>
-            <p>If this policy changes, the updated version will be posted on this page with a new date.</p>
-          </div>
+          <h2>Children</h2>
+          <p>This website and our services are intended for business owners and are not directed to children.</p>
+
+          <h2>Changes to this policy</h2>
+          <p>If we update this policy, we'll change the date at the top of this page.</p>
+
+          <h2>Contact</h2>
+          <p>Questions about privacy? Email <a href={`mailto:${email}`}>{email}</a>.</p>
         </div>
       </section>
     </>

@@ -1,78 +1,62 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
-import Logo from './Logo'
-import { navLinks } from '../data/site'
-import { studio } from '../data/studio'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { asset } from '../data/site'
+
+const links = [
+  { to: '/#how', label: 'How It Works' },
+  { to: '/services', label: 'Additional Services' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
-  const location = useLocation()
+  const { pathname, hash } = useLocation()
+  useEffect(() => setOpen(false), [pathname, hash])
 
-  useEffect(() => setOpen(false), [location.pathname, location.hash])
-
-  const isActive = (to: string) => {
-    const current = location.pathname + location.hash
-    return to === '/' ? current === '/' : current === to
-  }
-  const linkClass = (to: string) =>
-    `text-[15px] font-medium transition-colors ${isActive(to) ? 'text-teal' : 'text-charcoal/70 hover:text-charcoal'}`
+  const item = (l: { to: string; label: string }) =>
+    l.to.includes('#') ? (
+      <Link to={l.to}>{l.label}</Link>
+    ) : (
+      <NavLink to={l.to} className={({ isActive }) => (isActive ? 'active' : undefined)}>
+        {l.label}
+      </NavLink>
+    )
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ivory/95 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        <Link to="/" className="flex items-center gap-3" aria-label="Monetira home">
-          <Logo size={44} />
-          <span className="leading-tight">
-            <span className="block font-serif text-[26px] leading-none text-charcoal">Monetira</span>
-            <span className="hidden text-[11px] font-semibold uppercase tracking-[0.16em] text-charcoal/70 sm:block">
-              {studio.descriptor}
-            </span>
-          </span>
+    <header className="site-header">
+      <div className="wrap nav">
+        <Link className="brand" to="/" aria-label="Monetira home">
+          <img src={asset('images/monetira-logo.png')} alt="" width={52} height={52} />
+          <span>Monetira</span>
         </Link>
-
-        <div className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((l) => (
-            <Link key={l.to} to={l.to} className={linkClass(l.to)} aria-current={isActive(l.to) ? 'page' : undefined}>
-              {l.label}
-            </Link>
+        <ul className="nav-links">
+          {links.map((l) => (
+            <li key={l.to}>{item(l)}</li>
           ))}
-          <Link
-            to="/contact"
-            className="rounded-full bg-charcoal px-5 py-2.5 text-sm font-semibold text-ivory transition-colors hover:bg-teal"
-          >
-            Start a Project
-          </Link>
-        </div>
-
+          <li>
+            <Link className="btn btn-primary" to="/contact">Request a Review</Link>
+          </li>
+        </ul>
         <button
-          type="button"
-          className="rounded-md p-2 lg:hidden"
+          className="menu-btn"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? 'Close' : 'Menu'}
         </button>
-      </nav>
-
-      {open && (
-        <div id="mobile-menu" className="border-t border-line bg-ivory px-6 pb-6 lg:hidden">
-          <ul className="flex flex-col gap-1 pt-3">
-            {navLinks.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className={`block py-3 ${linkClass(l.to)}`} aria-current={isActive(l.to) ? 'page' : undefined}>
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link to="/contact" className="mt-3 block rounded-full bg-charcoal px-5 py-3 text-center font-semibold text-ivory">
-            Start a Project
-          </Link>
-        </div>
-      )}
+      </div>
+      <div id="mobile-menu" className={`mobile-menu${open ? ' open' : ''}`}>
+        <ul className="wrap">
+          {links.map((l) => (
+            <li key={l.to}>{item(l)}</li>
+          ))}
+          <li>
+            <Link className="btn btn-primary" to="/contact">Request a Business Review</Link>
+          </li>
+        </ul>
+      </div>
     </header>
   )
 }

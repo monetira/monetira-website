@@ -1,58 +1,37 @@
-import { Link } from 'react-router-dom'
-import { Mail } from 'lucide-react'
-import { StudioPageHeader, Eyebrow } from '../components/Studio'
 import TallyEmbed from '../components/TallyEmbed'
 import { site } from '../data/site'
-import { contactStudio } from '../data/studio'
+import { Link } from 'react-router-dom'
 
 export default function Contact() {
   return (
     <>
-      <StudioPageHeader eyebrow={contactStudio.eyebrow} title={contactStudio.title}>
-        <p>{contactStudio.intro}</p>
-      </StudioPageHeader>
+      <section className="page-head">
+        <div className="wrap">
+          <span className="eyebrow">Request a Business Review</span>
+          <h1>Tell us about your business.</h1>
+          <p className="lede">
+            Share a few details and your main concerns. We'll review your inquiry and reply by email with next steps.
+            There's no obligation.
+          </p>
+        </div>
+      </section>
 
-      <section className="bg-ivory py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_360px]">
-          {/* Public project inquiry form: set contactTallyUrl in data/site.ts */}
-          {site.contactTallyUrl ? (
-            <div>
-              <TallyEmbed urlOrId={site.contactTallyUrl} title="Project inquiry form" loadingLabel="Loading the project inquiry form..." />
-              <p className="mt-4 text-sm text-charcoal/70">
-                We use the information you provide to respond to your inquiry. Read our{' '}
-                <Link to="/privacy" className="font-semibold text-teal underline hover:text-teal-dark">Privacy Policy</Link>.
-              </p>
-            </div>
-          ) : (
-            <div className="rounded-3xl border border-line bg-white p-8 md:p-12">
-              <h2 className="font-serif text-4xl font-normal">Project inquiry</h2>
-              <p className="mt-4 max-w-lg text-lg leading-relaxed text-ink-soft">{contactStudio.pending}</p>
-              {site.contactEmail && (
-                <a
-                  href={`mailto:${site.contactEmail}`}
-                  className="mt-8 inline-flex items-center gap-3 rounded-full bg-charcoal px-6 py-3.5 font-semibold text-ivory transition-colors hover:bg-teal"
-                >
-                  <Mail aria-hidden="true" className="h-4 w-4" /> {site.contactEmail}
-                </a>
-              )}
-            </div>
-          )}
-
-          <aside>
-            <Eyebrow>{contactStudio.nextTitle}</Eyebrow>
-            <ol className="mt-6 border-t border-charcoal">
-              {contactStudio.next.map((step, i) => (
-                <li key={step} className="flex gap-4 border-b border-line py-5">
-                  <span className="font-serif text-3xl leading-none text-teal">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="leading-relaxed text-ink-soft">{step}</span>
-                </li>
-              ))}
+      <section className="section">
+        <div className="wrap contact-grid">
+          <TallyEmbed urlOrId={site.contactTallyUrl} title="Monetira business inquiry form" loadingLabel="Loading the inquiry form..." />
+          <aside className="side-box">
+            <h3>What happens next</h3>
+            <ol>
+              <li>We read your inquiry and your main concerns.</li>
+              <li>We reply by email to confirm fit, focus areas, and next steps.</li>
+              <li>If you go ahead, you'll receive a short questionnaire to begin your review.</li>
             </ol>
-            {site.contactEmail && (
-              <p className="mt-8 text-sm text-charcoal/70">
-                Prefer email? <a href={`mailto:${site.contactEmail}`} className="font-semibold text-teal hover:text-teal-dark">{site.contactEmail}</a>
-              </p>
-            )}
+            <h3 style={{ marginTop: 24 }}>Prefer email?</h3>
+            <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+            <p style={{ fontSize: '.95rem', marginTop: 16 }}>
+              Please don't include passwords, bank or account information, or tax documents. See our{' '}
+              <Link to="/privacy">Privacy Policy</Link>.
+            </p>
           </aside>
         </div>
       </section>
