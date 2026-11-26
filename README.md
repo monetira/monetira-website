@@ -37,11 +37,10 @@ The build uses `base: '/'`, so it is meant to be viewed at monetira.com, not at 
 
 - Page titles and descriptions: `src/data/seo.json`. The build writes them into each page's HTML and generates `sitemap.xml`.
 - `public/robots.txt` allows all pages and points to the sitemap.
-- `/website-vision` is marked noindex and left out of the sitemap.
 
 ## Launch
 
-In Cloudflare Pages, add the custom domain monetira.com (and www), then update DNS as Cloudflare instructs.
+See Deployment above: set the custom domain in Settings > Pages, add the DNS records, then turn on Enforce HTTPS.
 
 ## Run on a computer (optional)
 
