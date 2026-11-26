@@ -2,8 +2,7 @@
 
 React + Vite + TypeScript + Tailwind CSS site for Monetira.
 
-- **Preview address:** https://monetira.github.io/monetira-website/
-- **Future live address:** https://monetira.com (not connected yet)
+- **Live address:** https://monetira.com (not connected yet)
 
 ## What to edit
 
@@ -14,22 +13,29 @@ React + Vite + TypeScript + Tailwind CSS site for Monetira.
 | Brand colors and fonts | `src/styles/index.css` (the `@theme` block) |
 | Logo | `public/images/monetira-logo.png` (original kept as `monetira-logo-original.png`) |
 
-Editing a file on GitHub (pencil icon, then "Commit changes") automatically rebuilds the site in about 2 minutes.
+Editing a file on GitHub (pencil icon, then "Commit changes") on the `main` branch automatically rebuilds the site on Netlify in about 2 minutes.
 
 ## Forms
 
-Forms use Tally. The Free Snapshot page embeds the Tally form set in `snapshotTallyUrl`. When the Tally Contact form is ready, paste its link into `contactTallyUrl`. No passwords or API keys are needed or stored in this project.
+Forms use Tally. The Contact page embeds the form set in `contactTallyUrl`, and the private /website-vision page embeds the form set in `visionTallyUrl` (both in `src/data/site.ts`). No passwords or API keys are needed or stored in this project.
 
-## Deployment
+## Deployment (Netlify)
 
-Every change to the `main` branch runs `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages. In the repository settings, **Pages > Build and deployment > Source** must be set to **GitHub Actions**.
+The code lives in this GitHub repository. Netlify is connected to it and rebuilds the site every time `main` changes. Build settings are in `netlify.toml`:
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: 22
 
-## At launch (only after approval)
+The custom domain monetira.com is added in Netlify (Domain management), and DNS is set at GoDaddy using the records Netlify shows.
 
-1. In `vite.config.ts`, change `base: '/monetira-website/'` to `base: '/'`.
-2. In `index.html`, delete the line `<meta name="robots" content="noindex, nofollow" />`.
-3. Add a file `public/CNAME` containing `monetira.com`.
-4. Connect the domain in GitHub Pages settings, then update DNS.
+## Search engines
+
+- Page titles and descriptions: `src/data/seo.json`. The build writes them into each page's HTML and generates `sitemap.xml`.
+- `public/robots.txt` allows all pages and points to the sitemap.
+
+## Launch
+
+See Deployment above: add monetira.com in Netlify, add the DNS records at GoDaddy, and Netlify provides HTTPS automatically.
 
 ## Run on a computer (optional)
 

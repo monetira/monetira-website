@@ -1,0 +1,25 @@
+{
+  "siteUrl": "https://monetira.com",
+  "pages": {
+    "/": {
+      "title": "Monetira | Independent Business Reviews for Small Business Owners",
+      "description": "Too many expenses, not enough sales? Monetira provides independent business reviews with practical findings and a prioritized action plan, so you know where to focus first."
+    },
+    "/services": {
+      "title": "Additional Services | Monetira",
+      "description": "Website design, website updates, and selected implementation assistance from Monetira, offered by request alongside our business reviews."
+    },
+    "/about": {
+      "title": "About Us | Monetira",
+      "description": "Monetira gives small-business owners an independent perspective, built on real experience in business operations, healthcare management, client engagement and vendor management."
+    },
+    "/contact": {
+      "title": "Request a Business Review | Monetira",
+      "description": "Tell us about your business and your main concerns. We'll reply by email with next steps for your review, with no obligation."
+    },
+    "/privacy": {
+      "title": "Privacy Policy | Monetira",
+      "description": "How Monetira collects and uses information from inquiries and business reviews, including the third-party and AI-assisted tools that help process it."
+    }
+  }
+}

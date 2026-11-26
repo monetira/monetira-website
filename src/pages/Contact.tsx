@@ -1,56 +1,38 @@
-import { Mail, Phone, MapPin } from 'lucide-react'
-import PageHeader from '../components/PageHeader'
-import ContactForm from '../components/ContactForm'
 import TallyEmbed from '../components/TallyEmbed'
-import Button from '../components/Button'
 import { site } from '../data/site'
-import { contactPage } from '../data/content'
+import { Link } from 'react-router-dom'
 
 export default function Contact() {
   return (
     <>
-      <PageHeader eyebrow="Contact" title={contactPage.title}>
-        <p>{contactPage.intro}</p>
-      </PageHeader>
+      <section className="page-head">
+        <div className="wrap">
+          <span className="eyebrow">Request a Business Review</span>
+          <h1>Tell us about your business.</h1>
+          <p className="lede">
+            Share a few details and your main concerns. We'll review your inquiry and reply by email with next steps.
+            There's no obligation.
+          </p>
+        </div>
+      </section>
 
-      <section className="py-16 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_320px]">
-          {site.contactTallyUrl ? <TallyEmbed urlOrId={site.contactTallyUrl} title="Contact form" /> : <ContactForm />}
-          <aside className="space-y-6">
-            {(site.contactEmail || site.contactPhone || site.location) && (
-              <div className="rounded-2xl border border-line bg-white p-6">
-                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-bronze">Direct contact</h2>
-                <ul className="mt-4 space-y-3 text-sm">
-                  {site.contactEmail && (
-                    <li className="flex items-center gap-3">
-                      <Mail aria-hidden="true" className="h-4 w-4 text-teal" />
-                      <a href={`mailto:${site.contactEmail}`} className="hover:text-teal">{site.contactEmail}</a>
-                    </li>
-                  )}
-                  {site.contactPhone && (
-                    <li className="flex items-center gap-3">
-                      <Phone aria-hidden="true" className="h-4 w-4 text-teal" />
-                      {site.contactPhone}
-                    </li>
-                  )}
-                  {site.location && (
-                    <li className="flex items-center gap-3">
-                      <MapPin aria-hidden="true" className="h-4 w-4 text-teal" />
-                      {site.location}
-                    </li>
-                  )}
-                </ul>
-              </div>
-            )}
-            <div className="rounded-2xl border border-teal/25 bg-white p-6">
-              <h2 className="font-heading text-lg font-bold">Not sure where to start?</h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                The Free Business Snapshot is a quick way to begin. There is no obligation to purchase.
-              </p>
-              <div className="mt-5">
-                <Button to="/snapshot" arrow>Free Snapshot</Button>
-              </div>
-            </div>
+      <section className="section">
+        <div className="wrap contact-grid">
+          <TallyEmbed urlOrId={site.contactTallyUrl} title="Monetira business inquiry form" loadingLabel="Loading the inquiry form..." />
+          <aside className="side-box">
+            <h3>What happens next</h3>
+            <ol>
+              <li>We read your inquiry and your main concerns.</li>
+              <li>We reply by email to confirm fit, focus areas, and next steps.</li>
+              <li>If you go ahead, you'll receive a short questionnaire to begin your review.</li>
+            </ol>
+            <h3 style={{ marginTop: 24 }}>Prefer email?</h3>
+            <p><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p>
+            <p style={{ fontSize: '.95rem', marginTop: 16 }}>
+              Your information is used to respond to your inquiry and provide requested services. Please do not submit
+              sensitive personal or financial information. See our{' '}
+              <Link to="/privacy">Privacy Policy</Link>.
+            </p>
           </aside>
         </div>
       </section>

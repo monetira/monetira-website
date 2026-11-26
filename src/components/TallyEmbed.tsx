@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Loader2 } from 'lucide-react'
 import { site } from '../data/site'
 
 // Accepts a Tally share link (tally.so/r/ID), an embed link (tally.so/embed/ID),
@@ -18,7 +17,7 @@ declare global {
   }
 }
 
-export default function TallyEmbed({ urlOrId, title }: { urlOrId: string; title: string }) {
+export default function TallyEmbed({ urlOrId, title, loadingLabel = 'Loading the form...' }: { urlOrId: string; title: string; loadingLabel?: string }) {
   const id = tallyFormId(urlOrId)
   const [loaded, setLoaded] = useState(false)
 
@@ -41,17 +40,17 @@ export default function TallyEmbed({ urlOrId, title }: { urlOrId: string; title:
 
   if (!id) {
     return (
-      <p role="alert" className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-900">
-        The questionnaire link could not be read. Please email {site.contactEmail}.
+      <p role="alert" className="status">
+        The form link could not be read. Please email {site.contactEmail}.
       </p>
     )
   }
 
   return (
-    <div className="relative rounded-3xl border border-line bg-white p-4 md:p-8">
+    <div className="tally-box">
       {!loaded && (
-        <p className="flex items-center gap-2 p-6 text-ink-soft" role="status">
-          <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" /> Loading the questionnaire...
+        <p className="status" role="status">
+          {loadingLabel} If it doesn't appear, <a href={`https://tally.so/r/${id}`} target="_blank" rel="noopener">open the form in a new tab</a>.
         </p>
       )}
       <iframe
@@ -62,10 +61,10 @@ export default function TallyEmbed({ urlOrId, title }: { urlOrId: string; title:
         width="100%"
         height="600"
         onLoad={() => setLoaded(true)}
-        className="w-full border-0"
+
       />
       <noscript>
-        <a href={`https://tally.so/r/${id}`}>Open the questionnaire</a>
+        <a href={`https://tally.so/r/${id}`}>Open the form</a>
       </noscript>
     </div>
   )

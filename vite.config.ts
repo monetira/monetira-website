@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  // PREVIEW: the site is served at https://monetira.github.io/monetira-website/
-  // LAUNCH: when monetira.com is connected, change this to '/'
-  base: '/monetira-website/',
+  // Hosted on Netlify with the custom domain monetira.com, which serves
+  // the site from the root.
+  base: '/',
   plugins: [react(), tailwindcss()],
 })

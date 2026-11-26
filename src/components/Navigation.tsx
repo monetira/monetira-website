@@ -1,70 +1,59 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { asset } from '../data/site'
 import { Menu, X } from 'lucide-react'
-import Logo from './Logo'
-import { navLinks } from '../data/site'
+
+const links = [
+  { to: '/', label: 'Home' },
+  { to: '/#how', label: 'How It Works' },
+  { to: '/services', label: 'Additional Services' },
+  { to: '/about', label: 'About Us' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
-  const location = useLocation()
+  const { pathname, hash } = useLocation()
+  useEffect(() => setOpen(false), [pathname, hash])
 
-  useEffect(() => setOpen(false), [location.pathname])
-
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `text-[15px] font-medium transition-colors ${isActive ? 'text-teal' : 'text-charcoal/75 hover:text-charcoal'}`
+  const item = (l: { to: string; label: string }) =>
+    l.to.includes('#') ? (
+      <Link to={l.to}>{l.label}</Link>
+    ) : (
+      <NavLink to={l.to} end className={({ isActive }) => (isActive ? 'active' : undefined)}>
+        {l.label}
+      </NavLink>
+    )
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ivory/90 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-        <Link to="/" className="flex items-center gap-3" aria-label="Monetira home">
-          <Logo size={52} />
+    <header className="site-header">
+      <div className="wrap nav">
+        <Link className="brand" to="/" aria-label="Monetira home">
+          <img src={asset('images/monetira-logo.png')} alt="" width={64} height={64} />
+          <span>MONETIRA</span>
         </Link>
-
-        <div className="hidden items-center gap-9 md:flex">
-          {navLinks.map((l) => (
-            <NavLink key={l.to} to={l.to} className={linkClass}>
-              {l.label}
-            </NavLink>
+        <ul className="nav-links">
+          {links.map((l) => (
+            <li key={l.to}>{item(l)}</li>
           ))}
-          <Link
-            to="/snapshot"
-            className="rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-dark"
-          >
-            Free Snapshot
-          </Link>
-        </div>
-
+        </ul>
         <button
-          type="button"
-          className="rounded-md p-2 md:hidden"
+          className="menu-btn"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X aria-hidden="true" size={22} strokeWidth={2.5} /> : <Menu aria-hidden="true" size={22} strokeWidth={2.5} />}
+          <span>{open ? 'Close' : 'Menu'}</span>
         </button>
-      </nav>
-
-      {open && (
-        <div id="mobile-menu" className="border-t border-line bg-ivory px-6 pb-6 md:hidden">
-          <ul className="flex flex-col gap-1 pt-3">
-            {navLinks.map((l) => (
-              <li key={l.to}>
-                <NavLink to={l.to} className={({ isActive }) => `block py-3 ${linkClass({ isActive })}`}>
-                  {l.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <Link
-            to="/snapshot"
-            className="mt-3 block rounded-full bg-teal px-5 py-3 text-center font-semibold text-white"
-          >
-            Get Your Free Business Snapshot
-          </Link>
-        </div>
-      )}
+      </div>
+      <div id="mobile-menu" className={`mobile-menu${open ? ' open' : ''}`}>
+        <ul className="wrap">
+          {links.map((l) => (
+            <li key={l.to}>{item(l)}</li>
+          ))}
+        </ul>
+      </div>
     </header>
   )
 }

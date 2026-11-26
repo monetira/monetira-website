@@ -7,7 +7,8 @@
 export const site = {
   name: 'Monetira',
   domain: 'monetira.com',
-  headline: 'Find What Your Business Is Missing.',
+  headline: 'Too Many Expenses. Not Enough Sales. Where Do You Start? RIGHT HERE.',
+  // Previous headline (audit site): 'Find What Your Business Is Missing.'
   tagline: 'Every customer matters. Every dollar counts.',
 
   // Contact details. Leave blank ('') to hide them on the site.
@@ -23,11 +24,18 @@ export const site = {
   snapshotTallyUrl: 'https://tally.so/r/RWdO2j',
   // Optional: a Tally link for the contact form. While blank, the contact form
   // is labeled "not yet connected" and visitors are shown the email address.
-  contactTallyUrl: '',
+  // Public project inquiry form, embedded on the Contact page.
+  contactTallyUrl: 'https://tally.so/r/9N7vyp',
+  // Private Website Vision questionnaire for clients (page /website-vision, not in the menu).
+  visionTallyUrl: 'https://tally.so/r/e5a2Vo',
   formProviderName: 'Tally', // shown in the Privacy Policy
 
   // Privacy Policy "last updated" date
-  privacyLastUpdated: 'November 2026',
+  privacyLastUpdated: 'November 26, 2026',
+
+  // Homepage testimonials. Both approved Nov 26, 2026 (C.P. and C.M.).
+  // Set to false to hide them on the live site.
+  testimonialsApproved: true,
 }
 
 // -------------------------------------------------------------
@@ -70,8 +78,10 @@ export const audit = {
 }
 
 export const navLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'Portfolio', to: '/work' },
+  { label: 'Services', to: '/services' },
   { label: 'About', to: '/about' },
-  { label: 'Business Audit', to: '/audit' },
   { label: 'Contact', to: '/contact' },
 ]
 
