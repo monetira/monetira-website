@@ -211,7 +211,6 @@ export default function Home() {
                 </figure>
               ))}
             </div>
-            <p className="fine quote-note">Testimonials provided by family members of Monetira's founder.</p>
           </div>
         </section>
       )}
