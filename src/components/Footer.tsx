@@ -8,6 +8,7 @@ export default function Footer() {
         <div>
           <span className="word">Monetira</span>
           <small>Business Efficiency &amp; Opportunity Reviews</small>
+          <small className="foot-brand">Every Customer Matters. Every Dollar Counts.</small>
         </div>
         <nav aria-label="Footer">
           <Link to="/services">Additional Services</Link>

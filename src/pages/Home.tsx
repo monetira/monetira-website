@@ -1,5 +1,12 @@
-import HeroSlideshow from '../components/HeroSlideshow'
+import HeroPhoto from '../components/HeroPhoto'
 import { Link } from 'react-router-dom'
+
+const checklist = [
+  { title: 'Follow up on every completed job within 3 days', note: 'Repeat requests depend on memory, not a routine.', pri: ['High priority', 'p-high'], effort: 'Low effort' },
+  { title: 'Compare quotes on the two largest recurring vendor bills', note: 'Neither contract has been reviewed in over 3 years.', pri: ['High priority', 'p-high'], effort: 'Medium effort' },
+  { title: 'Write down the scheduling process', note: 'Only one person knows how jobs get booked.', pri: ['Medium priority', 'p-med'], effort: 'Low effort' },
+  { title: "Update the website's services and contact page", note: 'Referrals check it first. It lists retired services.', pri: ['Plan next', 'p-low'], effort: 'Medium effort' },
+]
 
 const receive = [
   ['01', 'A concise written assessment', 'A plain-language summary of what we found in the areas you chose, without jargon or filler.'],
@@ -26,7 +33,7 @@ const steps = [
 export default function Home() {
   return (
     <>
-      <HeroSlideshow />
+      <HeroPhoto />
 
       <section className="section">
         <div className="wrap receive-grid">
@@ -41,15 +48,37 @@ export default function Home() {
               Findings are based on the information you provide and anything we can independently check, and we tell
               you which is which. We don't promise specific savings or sales results.
             </p>
+            <ul className="receive-list">
+              {receive.map(([k, t, d]) => (
+                <li key={k}>
+                  <span className="k">{k}</span>
+                  <div><h3>{t}</h3><p>{d}</p></div>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="receive-list">
-            {receive.map(([k, t, d]) => (
-              <li key={k}>
-                <span className="k">{k}</span>
-                <div><h3>{t}</h3><p>{d}</p></div>
-              </li>
-            ))}
-          </ul>
+          <div className="report" aria-label="Sample prioritized action checklist">
+            <div className="report-head">
+              <strong>Prioritized Action Checklist</strong>
+              <span className="tag">Sample</span>
+            </div>
+            <div className="report-meta"><b>Business:</b> Commercial service company, 14 employees</div>
+            <ol>
+              {checklist.map((c, i) => (
+                <li key={c.title}>
+                  <div className="num">{i + 1}</div>
+                  <div>
+                    <h4>{c.title}</h4>
+                    <p>{c.note}</p>
+                    <div className="pills">
+                      <span className={`pill ${c.pri[1]}`}>{c.pri[0]}</span>
+                      <span className="pill p-effort">{c.effort}</span>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -117,6 +146,7 @@ export default function Home() {
           <div className="cta-row">
             <Link className="btn btn-white" to="/contact">Request a Business Review</Link>
           </div>
+          <p className="brand-line">Every Customer Matters. Every Dollar Counts.</p>
         </div>
       </section>
     </>

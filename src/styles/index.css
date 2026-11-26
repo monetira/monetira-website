@@ -55,15 +55,15 @@ p + p { margin-top: 1rem; }
 
 /* Header */
 .site-header { background: var(--white); border-bottom: 1px solid var(--line); position: relative; z-index: 20; }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 20px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand img { width: 52px; height: 52px; }
-.brand span { font-family: var(--serif); font-weight: 900; font-size: 1.35rem; color: var(--charcoal); letter-spacing: .02em; }
-.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-.nav-links a { color: var(--charcoal); text-decoration: none; font-weight: 600; font-size: 1rem; }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 20px; }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand img { width: 64px; height: 64px; }
+.brand span { font-family: var(--sans); font-weight: 700; font-size: 1.85rem; color: var(--charcoal); letter-spacing: .06em; line-height: 1; }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { color: var(--charcoal); text-decoration: none; font-weight: 600; font-size: 1.05rem; padding: 6px 0; border-bottom: 3px solid transparent; }
 .nav-links a:hover, .nav-links a.active { color: var(--teal); }
-.nav-links a.active { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
-.nav-links a.btn { color: var(--white); padding: 11px 20px; font-size: .98rem; text-decoration: none; }
+.nav-links a.active { color: var(--charcoal); font-weight: 700; border-bottom-color: #D9A94A; }
+.nav-links a.btn { color: var(--white); padding: 11px 20px; font-size: .98rem; text-decoration: none; border-bottom: 2px solid var(--teal); }
 .menu-btn { display: none; background: var(--white); border: 2px solid var(--charcoal); border-radius: 6px; padding: 8px 12px; font: 700 1rem var(--sans); color: var(--charcoal); cursor: pointer; }
 .mobile-menu { display: none; }
 
@@ -208,8 +208,8 @@ p + p { margin-top: 1rem; }
   .wrap { padding: 0 20px; }
   .section { padding: 60px 0; }
   .nav { height: 70px; }
-  .brand img { width: 42px; height: 42px; }
-  .brand span { font-size: 1.15rem; }
+  .brand img { width: 46px; height: 46px; }
+  .brand span { font-size: 1.35rem; }
   .hero { padding: 48px 0 56px; }
   .hero h1 { font-size: 1.95rem; }
   h1, .page-head h1 { font-size: 2rem; }
@@ -312,4 +312,44 @@ p + p { margin-top: 1rem; }
   .ss-btn { min-width: 38px; padding: 0 10px; }
   .ss-pause .lbl { display: none; }
   .ss-pause .ico { display: inline; font-size: .8rem; }
+}
+
+/* =============================================================
+   HOMEPAGE HERO: PHOTOGRAPHIC VERSION (approved Nov 26, 2026)
+   Real text on solid dark teal. The photo is a separate image that
+   fades in from the right. No blur, no animation, no text shadows.
+   ============================================================= */
+.hero3 { position: relative; overflow: hidden; background: linear-gradient(100deg, #0D2B2E 0%, #113639 50%, #143F42 100%); color: #F8F5EE; }
+.hero3-photo { position: absolute; top: 0; right: 0; width: 60%; height: 100%; object-fit: cover; object-position: 35% 50%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%); mask-image: linear-gradient(to right, transparent 0%, #000 40%); }
+.hero3-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #0D2B2E 0%, rgba(13, 43, 46, .9) 38%, rgba(13, 43, 46, 0) 62%); }
+.hero3-inner { position: relative; z-index: 1; padding-top: 88px; padding-bottom: 96px; }
+.hero3 h1 { color: #F8F5EE; font-weight: 700; font-size: clamp(2.05rem, 4.3vw, 3.95rem); line-height: 1.16; letter-spacing: -.005em; margin: 0; }
+.hero3 h1 .line { display: block; }
+.hero3 h1 .here { display: block; color: #E2B65C; font-weight: 900; font-size: 1.2em; line-height: 1.12; margin-top: .1em; letter-spacing: .01em; }
+.hero3-swoosh { display: block; width: min(420px, 72%); height: 12px; margin: 14px 0 30px 4%; color: #D9A94A; }
+.hero3-lede { font-size: 1.32rem; line-height: 1.55; color: #EDE8DD; max-width: 560px; margin-bottom: 36px; }
+.hero3-btn { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 1.3rem; line-height: 1.2; text-decoration: none;
+  color: #1A1D1E; background: linear-gradient(180deg, #EEC772 0%, #D9A94A 100%); padding: 20px 44px; border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .28); }
+.hero3-btn:hover { color: #1A1D1E; background: linear-gradient(180deg, #F3D28A 0%, #E0B358 100%); }
+.hero3-btn:focus-visible { outline: 3px solid #F8F5EE; outline-offset: 3px; }
+
+/* Brand statement: kept whole, understated */
+.final .brand-line { margin-top: 30px; font-family: var(--serif); font-weight: 700; font-size: 1.02rem; letter-spacing: .03em; color: #F3E8D3; }
+.foot .foot-brand { font-family: var(--serif); font-weight: 700; color: #E8D3A8; margin-top: 8px; }
+
+@media (max-width: 980px) {
+  .hero3-photo { width: 75%; }
+  .hero3-shade { background: linear-gradient(90deg, #0D2B2E 0%, rgba(13, 43, 46, .92) 45%, rgba(13, 43, 46, .35) 100%); }
+  .hero3-inner { padding-top: 64px; padding-bottom: 72px; }
+}
+@media (max-width: 640px) {
+  .hero3-photo { width: 100%; object-position: 62% 60%; -webkit-mask-image: none; mask-image: none; }
+  .hero3-shade { background: linear-gradient(180deg, rgba(13, 43, 46, .95) 0%, rgba(13, 43, 46, .9) 62%, rgba(13, 43, 46, .55) 100%); }
+  .hero3-inner { padding-top: 44px; padding-bottom: 52px; }
+  .hero3 h1 { font-size: 2.05rem; }
+  .hero3-swoosh { margin: 10px 0 20px 2%; }
+  .hero3-lede { font-size: 1.1rem; margin-bottom: 26px; }
+  .hero3-btn { display: block; text-align: center; font-size: 1.15rem; padding: 17px 20px; }
 }

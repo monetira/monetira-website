@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { asset } from '../data/site'
 
 const links = [
+  { to: '/', label: 'Home' },
   { to: '/#how', label: 'How It Works' },
   { to: '/services', label: 'Additional Services' },
   { to: '/about', label: 'About' },
@@ -18,7 +19,7 @@ export default function Navigation() {
     l.to.includes('#') ? (
       <Link to={l.to}>{l.label}</Link>
     ) : (
-      <NavLink to={l.to} className={({ isActive }) => (isActive ? 'active' : undefined)}>
+      <NavLink to={l.to} end className={({ isActive }) => (isActive ? 'active' : undefined)}>
         {l.label}
       </NavLink>
     )
@@ -27,8 +28,8 @@ export default function Navigation() {
     <header className="site-header">
       <div className="wrap nav">
         <Link className="brand" to="/" aria-label="Monetira home">
-          <img src={asset('images/monetira-logo.png')} alt="" width={52} height={52} />
-          <span>Monetira</span>
+          <img src={asset('images/monetira-logo.png')} alt="" width={64} height={64} />
+          <span>MONETIRA</span>
         </Link>
         <ul className="nav-links">
           {links.map((l) => (
