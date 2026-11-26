@@ -13,25 +13,20 @@ React + Vite + TypeScript + Tailwind CSS site for Monetira.
 | Brand colors and fonts | `src/styles/index.css` (the `@theme` block) |
 | Logo | `public/images/monetira-logo.png` (original kept as `monetira-logo-original.png`) |
 
-Editing a file on GitHub (pencil icon, then "Commit changes") on the `main` branch automatically rebuilds the site on GitHub Pages in about 2 minutes.
+Editing a file on GitHub (pencil icon, then "Commit changes") on the `main` branch automatically rebuilds the site on Netlify in about 2 minutes.
 
 ## Forms
 
 Forms use Tally. The Contact page embeds the form set in `contactTallyUrl`, and the private /website-vision page embeds the form set in `visionTallyUrl` (both in `src/data/site.ts`). No passwords or API keys are needed or stored in this project.
 
-## Deployment (GitHub Pages)
+## Deployment (Netlify)
 
-The site is built and published by the GitHub Actions workflow in `.github/workflows/deploy.yml` every time `main` changes.
+The code lives in this GitHub repository. Netlify is connected to it and rebuilds the site every time `main` changes. Build settings are in `netlify.toml`:
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: 22
 
-One-time settings (repository Settings > Pages):
-- Source: GitHub Actions
-- Custom domain: monetira.com, then Enforce HTTPS once it becomes available
-
-DNS for monetira.com (at the domain's DNS provider):
-- A records for monetira.com: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-- CNAME record for www: monetira.github.io
-
-The build uses `base: '/'`, so it is meant to be viewed at monetira.com, not at the github.io project address.
+The custom domain monetira.com is added in Netlify (Domain management), and DNS is set at GoDaddy using the records Netlify shows.
 
 ## Search engines
 
@@ -40,7 +35,7 @@ The build uses `base: '/'`, so it is meant to be viewed at monetira.com, not at 
 
 ## Launch
 
-See Deployment above: set the custom domain in Settings > Pages, add the DNS records, then turn on Enforce HTTPS.
+See Deployment above: add monetira.com in Netlify, add the DNS records at GoDaddy, and Netlify provides HTTPS automatically.
 
 ## Run on a computer (optional)
 
