@@ -33,9 +33,9 @@ export const site = {
   // Privacy Policy "last updated" date
   privacyLastUpdated: 'November 26, 2026',
 
-  // Homepage testimonials. Keep false until each person has approved the
-  // wording and attribution. The local preview file always shows them.
-  testimonialsApproved: false,
+  // Homepage testimonials. Both approved Nov 26, 2026 (C.P. and C.M.).
+  // Set to false to hide them on the live site.
+  testimonialsApproved: true,
 }
 
 // -------------------------------------------------------------

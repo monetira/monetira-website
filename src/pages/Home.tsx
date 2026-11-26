@@ -17,7 +17,7 @@ const includes = [
   '3-5 prioritized action items',
 ]
 
-// Proposed wording, pending approval by each person (see site.testimonialsApproved)
+// Approved Nov 26, 2026. Shown when site.testimonialsApproved is true.
 const testimonials = [
   {
     quote:
